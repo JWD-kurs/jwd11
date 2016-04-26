@@ -6,19 +6,15 @@
 
 ![Spring runtime](http://46.4.82.177/kursimages/spring-overview.png?raw=true) 
 
-### MVC šablon
+Classical web - server side generated HTML:
 
-[MVC (Model-View-Controller)](http://en.wikipedia.org/wiki/Model-view-controller) je šablon softverske arhitekture koji se sastoji od tri komponente: **Model**, **View**, **Controller**. 
-Model predstavlja podatke aplikacije, poslovnu logiku i funkcije. 
-View predstavlja bilo kakvu (vizuelnu) reprezentaciju podataka (modela).
-Controller prima ulaz na osnovu kog izvršava operacije nad modelom.
+![Server side generated HTML](http://46.4.82.177/kursimages/web-centric.png)
 
 
-MVC je šablon koji se često koristi u razvoju web aplikacija.
+Data centric approach - server side generated data:
 
+![Data Centric](http://46.4.82.177/kursimages/data-centric.png)
 
-![MVC](http://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg) 
-----
 
 ### Maven
 -------------------------
