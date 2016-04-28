@@ -98,7 +98,7 @@ Po uzoru na aktivnosti, dodati mogućnost evidencije korisnika:
 3. Dodati ApiUserController klasu za korisnike (/api/users)
 
 Lektira: 
-1. [What is REST](http://martinfowler.com/articles/richardsonMaturityModel.html)
-1. [Building a RESTful Web Service](http://spring.io/guides/gs/rest-service/)
-1. [Spring REST support](http://docs.spring.io/spring/docs/4.0.3.RELEASE/spring-framework-reference/htmlsingle/#mvc-ann-restcontroller)
-1. [HTTP Status Codes] (http://www.restapitutorial.com/httpstatuscodes.html)
+* [What is REST](http://martinfowler.com/articles/richardsonMaturityModel.html)
+* [Building a RESTful Web Service](http://spring.io/guides/gs/rest-service/)
+* [Spring REST support](http://docs.spring.io/spring/docs/4.0.3.RELEASE/spring-framework-reference/htmlsingle/#mvc-ann-restcontroller)
+* [HTTP Status Codes] (http://www.restapitutorial.com/httpstatuscodes.html)
