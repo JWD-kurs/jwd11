@@ -1,0 +1,86 @@
+﻿## Lab 5 - DTO, parametri
+
+----
+
+### DTO (Data Transfer Object)
+
+Data Transfer Object je objekat koji se koristi za enkapsulaciju podataka, 
+i za njihovo slanje/prijem od strane jednog podsistema aplikacije ka drugom podsistemu.
+
+DTO se najčešće koriste u višeslojnoj aplikaciji za transfer podataka između same aplikacije i UI sloja. Takođe se veoma dobro uklapaju u MVC šablon.
+
+DTO su neophodni uvek kada se format podataka koji razmenjujemo sa spoljnim
+aplikacijama razlikuje od formata entiteta koji interno koristimo u modelu.
+
+----
+
+* Napraviti paket `jwd.wafepa.web.dto`
+
+* Napraviti klasu `ActivityDTO` u paketu `jwd.wafepa.web.dto`. Polja klase `ActivityDTO` treba da budu ista kao polja klase `Activity` (`Long id`, `String name`).
+
+* Prebaciti sve anotacije koje se koriste za validaciju podataka iz `Activity` u `ActivityDTO`.
+
+* Izmeniti `ApiActivityController` da ne koristi `Activity` za prenos podataka između UI sloja i aplikacije, već `ActivityDTO`.
+
+* Testirati napravljeni REST web servis
+
+
+----
+
+### Parametri REST metoda
+
+Zapravo pretraživanje podataka na osnovu nekog kriterijuma.
+
+
+Po pravilu, svi dodatni parametri koje je neophodno poslati REST servisu, šalju se preko HTTP request parametara. Npr., za zahtev:
+
+```
+HTTP GET http://www.restservice.com/api/examples?param1=value1&param2=value2
+```
+
+request parametri su param1 i param2 i imaju vrednosti value1 i value2. Naravno, parametara može biti više i ne moraju se zvati (čak se i ne savetuje) param1 i param2,
+već imenom odražavaju svoju funkciju. Vodeći se ovim, pretraživanje aktivnosti po imenu (na WAFEPA aplikaciji) će biti implementirano slanjem request parametra **name**, 
+npr. za pronalaženje aktivnosti čije ime sadrži reč "run":
+
+```
+HTTP GET http://localhost:8080/api/activities?name=run
+```
+
+(obratite pažnju da je osnovni poziv na REST isti, samo smo dodali request parametre na kraju)
+
+**Pogrešne implementacije pretraživanja aktivnosti po imenu (preko REST servisa)**:
+
+* HTTP GET http://localhost:8080/api/activities/run
+* HTTP GET http://localhost:8080/api/activities/name/run
+* HTTP POST http://localhost:8080/api/activities/find
+* HTTP GET http://localhost:8080/api/find_activities?name=run
+* HTTP GET http://localhost:8080/api/find_by_name/run
+* itd...
+
+Spring omogućava proširenje REST servisa ovakvim request parametrima. Sve što je potrebno uraditi je:
+
+* Metodu kontrolera proširiti parametrom i anotirati ga sa @RequestParam.
+
+* Dakle, u našem slučaju metodu getActivities (kontroller ApiActivitiesController) proširiti parametrom String name i anotirati ga sa @RequestParam.
+
+
+----
+
+* Napraviti paket `jwd.wafepa.web.dto`
+
+* Napraviti klasu `ActivityDTO` u paketu `jwd.wafepa.web.dto`. Polja klase `ActivityDTO` treba da budu ista kao polja klase `Activity` (`Long id`, `String name`).
+
+* Prebaciti sve anotacije koje se koriste za validaciju podataka iz `Activity` u `ActivityDTO`.
+
+* Izmeniti `ApiActivityController` da ne koristi `Activity` za prenos podataka između UI sloja i aplikacije, već `ActivityDTO`.
+
+* Testirati napravljeni REST web servis u web browseru.
+
+----
+
+### Domaći zadatak
+
+1. Po uzoru na aktivitnosti, napraviti REST web servis za korisnike
+2. Napraviti UserDTO klasu i izmeniti REST web servis za korisnike da koristi UserDTO, a ne User klasu.
+3. Testirati napravljeni REST web servis u web browseru.
+4. **Ponoviti jQuery i JavaScript**
