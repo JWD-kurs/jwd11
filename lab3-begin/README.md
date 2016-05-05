@@ -75,17 +75,21 @@ Spring omogućava proširenje REST servisa ovakvim request parametrima. Sve što
 
 ----
 
-* Napraviti paket `jwd.wafepa.web.dto`
+### Maven standalone
 
-* Napraviti klasu `ActivityDTO` u paketu `jwd.wafepa.web.dto`. Polja klase `ActivityDTO` treba da budu ista kao polja klase `Activity` (`Long id`, `String name`).
+* http://docs.spring.io/spring-boot/docs/1.3.3.RELEASE/maven-plugin/
 
-* Prebaciti sve anotacije koje se koriste za validaciju podataka iz `Activity` u `ActivityDTO`.
+* Zatvoriti Eclipse
+* Otvoriti terminal u folderu gde se nalazi pom.xml projekta
+* Pokrenuti `mvn spring-boot:run` i otići na stranicu projekta iz browser-a
+* Zaustaviti projekat (Ctrl-C)
+* Pokrenuti `mvn package` i pogledati sadržaj target foldera
+* U pom.xml izmeniti `<packaging>war</packaging>` u `<packaging>jar</packaging>` i pokrenuti ponovo `mvn package`
+* Iz target foldera pokrenuti jar
+* Izmeniti testove tako da neki od njih ne prođe
+* Pokušati ponovo sa `mvn package`
 
-* Izmeniti `ApiActivityController` da ne koristi `Activity` za prenos podataka između UI sloja i aplikacije, već `ActivityDTO`.
-
-* Testirati napravljeni REST web servis u web browseru.
-
-----
+---
 
 ### Domaći zadatak
 
