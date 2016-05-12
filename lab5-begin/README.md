@@ -54,7 +54,7 @@ Sada možemo dodati anotacije koje nalažu JPA da mapira vezu između objekata.
 ```
 * u application.properties ddl-auto podešavanje prebaciti na create
 * Pokrenuti aplikaciju i ispratiti promene nastale na šemi baze
-* U WafepaApplication klasu dodati metodu za kreiranje test podataka:
+* Dodati klasu TestData za kreiranje test podataka:
 ```java
 	@Autowired
 	UserService userService;
@@ -85,12 +85,15 @@ Sada možemo dodati anotacije koje nalažu JPA da mapira vezu između objekata.
 
 	}
 ```
+*Anotirati klasu `TestData` kao `@Component`
+*povezati `TestData` sa `WafepaApplication`
 
 ### REST mapiranje kompozicije
 
 Adrese korisnika ćemo mapirati na pod-resurs resursa User, tj. na URL `/api/users/{userid}/addresses`
 
 * Izmenizi `RequestMapping` klase `AddressController`
+* Dodati u AddressRepository i AddressService metodu findByUser
 * Izmeniti `RequestMapping` i tela njenih metoda, tako da se učitavaju adrese samo za određenog korisnika
 
 ----
