@@ -13,41 +13,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jwd.wafepa.model.Address;
 import jwd.wafepa.service.AddressService;
+import jwd.wafepa.support.AddressDTOToAddress;
+import jwd.wafepa.support.AddressToAddressDTO;
+import jwd.wafepa.web.dto.AddressDTO;
 
 @Controller
 @RequestMapping("/api/addresses")
 public class ApiAddressController {
 	@Autowired
 	private AddressService addressService;
+	
+	@Autowired
+	private AddressDTOToAddress toAddress;
+	
+	@Autowired
+	private AddressToAddressDTO toDTO;
 
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Address>> get(){
+	public ResponseEntity<List<AddressDTO>> get(){
 		List<Address> addresses = addressService.findAll();
 		
-		return new ResponseEntity<List<Address>>(
-				addresses, 
+		return new ResponseEntity<>(
+				toDTO.convert(addresses), 
 				HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Address> get(@PathVariable Long id){
+	public ResponseEntity<AddressDTO> get(@PathVariable Long id){
 		Address address = addressService.findOne(id);
 		
-		return new ResponseEntity<Address>(
-				address, 
+		return new ResponseEntity<>(
+				toDTO.convert(address), 
 				HttpStatus.OK);
 	}
 	
 	@RequestMapping(
 			method=RequestMethod.POST,
 			consumes="application/json")
-	public ResponseEntity<Address> add(
-			@RequestBody Address newAddress){
+	public ResponseEntity<AddressDTO> add(
+			@RequestBody AddressDTO newAddress){
 		
-		Address persisted = addressService.save(newAddress);
+		Address persisted = addressService.save(toAddress.convert(newAddress));
 		
 		return new ResponseEntity<>(
-				persisted, 
+				toDTO.convert(persisted), 
 				HttpStatus.CREATED);
 	}
 	
@@ -55,23 +64,23 @@ public class ApiAddressController {
 			value="/{id}",
 			method=RequestMethod.PUT,
 			consumes="application/json")
-	public ResponseEntity<Address> edit(
+	public ResponseEntity<AddressDTO> edit(
 		@PathVariable Long id,
-		@RequestBody Address editedAddress){
+		@RequestBody AddressDTO editedAddress){
 	
 		if(id==null || !id.equals(editedAddress.getId())){
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		Address persisted = addressService.save(editedAddress);
+		Address persisted = addressService.save(toAddress.convert(editedAddress));
 		
 		return new ResponseEntity<>(
-				persisted,
+				toDTO.convert(persisted), 
 				HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-	public ResponseEntity<Address> delete(
+	public ResponseEntity<AddressDTO> delete(
 			@PathVariable Long id){
 		
 		addressService.delete(id);
