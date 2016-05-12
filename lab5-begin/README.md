@@ -1,0 +1,103 @@
+﻿## Lab 5 - Veze objekata, validacija, paginacija
+
+### ORM - Veze između objekata
+
+Želimo da implementiramo mogućnost čuvanja više adresa za jednog korisnika. U našoj implementaciji, adrese jednog korisnika će biti nezavisne od adresa ostalih korisnika, bez obzira na to da li su u pitanju iste geografske adrese. Najpre ćemo ostvariti vezu klasa `User` i `Address` na nivou objektnog modela. 
+
+* Klasi User dodajemo polje koje sadrži listu adresa tog korisnika:
+
+```java 
+private List<Address> addresses = new ArrayList<>();
+```
+
+* Klasi `Address` dodajemo polje koje govori kog korisnika je to adresa:
+
+```java 
+private User user;
+```
+
+* Generisati getere i setere
+
+Neophodno je obezbediti da ukoliko se jedan kraj veze promeni, ta promena bude ažurirana i u entitetu na drugom kraju veze. Drugim rečima, održavanje veze je naš zadatak i ne obavlja se automatski. 
+
+* U klasi `User` dodati metodu `addAddress()`
+
+```java 
+	public void addAddress(Address address){
+		this.addresses.add(address);
+		if(address.getUser()!=this){
+			address.setUser(this);
+		}
+	}
+```
+
+* U klasi `Address` modifikovati metodu `setUser()`
+
+```java 
+	public void setUser(User user) {
+		this.user = user;
+		if(!user.getAddresses().contains(this)){
+			user.getAddresses().add(this);
+		}
+	}
+```
+
+Sada možemo dodati anotacije koje nalažu JPA da mapira vezu između objekata.
+
+* Na polje `addresses` klase `User` dodati anotaciju:
+```java 
+@OneToMany(mappedBy="user")
+```
+* Na polje `user` klase `Address` dodati anotaciju:
+```java 
+@ManyToOne(fetch=FetchType.EAGER)
+```
+* u application.properties ddl-auto podešavanje prebaciti na create
+* Pokrenuti aplikaciju i ispratiti promene nastale na šemi baze
+* U WafepaApplication klasu dodati metodu za kreiranje test podataka:
+```java
+	@Autowired
+	UserService userService;
+
+	@Autowired
+	AddressService addressService;
+
+	@PostConstruct
+	private void init() {
+		for (int i = 1; i <= 5; i++) {
+			User user = new User();
+			user.setFirstName("First name " + i);
+			user.setLastName("Last name " + i);
+			user.setEmail("email" + i + "@example.com");
+			user.setPassword("123");
+			userService.save(user);
+
+			for (int j = 1; j <= 3; j++) {
+				Address address = new Address();
+				address.setNumber(j + "c/7");
+				address.setStreat("Narodnog fronta");
+
+				address.setUser(user);
+				user.addAddress(address);
+				addressService.save(address);
+			}
+		}
+
+	}
+```
+
+### REST mapiranje kompozicije
+
+Adrese korisnika ćemo mapirati na pod-resurs resursa User, tj. na URL `/api/users/{userid}/addresses`
+
+* Izmenizi `RequestMapping` klase `AddressController`
+* Izmeniti `RequestMapping` i tela njenih metoda, tako da se učitavaju adrese samo za određenog korisnika
+
+----
+
+
+
+
+### Domaći zadatak
+
+1. Ponoviti JavaScript i jQuery
