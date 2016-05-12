@@ -15,7 +15,7 @@ import jwd.wafepa.model.Address;
 import jwd.wafepa.service.AddressService;
 
 @Controller
-@RequestMapping("/api/address")
+@RequestMapping("/api/addresses")
 public class ApiAddressController {
 	@Autowired
 	private AddressService addressService;
