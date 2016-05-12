@@ -1,6 +1,6 @@
-﻿## Lab 5 - Veze objekata, validacija, paginacija
+﻿## Lab 5 - Veze objekata, paginacija, validacija
 
-### ORM - Veze između objekata
+## ORM - Veze između objekata
 
 Želimo da implementiramo mogućnost čuvanja više adresa za jednog korisnika. U našoj implementaciji, adrese jednog korisnika će biti nezavisne od adresa ostalih korisnika, bez obzira na to da li su u pitanju iste geografske adrese. Najpre ćemo ostvariti vezu klasa `User` i `Address` na nivou objektnog modela. 
 
@@ -93,14 +93,26 @@ Sada možemo dodati anotacije koje nalažu JPA da mapira vezu između objekata.
 Adrese korisnika ćemo mapirati na pod-resurs resursa User, tj. na URL `/api/users/{userid}/addresses`
 
 * Izmenizi `RequestMapping` klase `AddressController`
-* Dodati u AddressRepository i AddressService metodu findByUser
+* Dodati u `AddressRepository` i `AddressService` metodu `findByUser(User user)`
 * Izmeniti `RequestMapping` i tela njenih metoda, tako da se učitavaju adrese samo za određenog korisnika
 
 ----
 
+## Paginacija
+
+Aplikacije neretko sadrže više hiljada, pa i miliona instanci nekog entiteta. Neophodno je podržati da se u jednom zahtevu vrati samo deo tih instanci. Ovo se naziva paginacija.
+
+* izmeniti `TestData` klasu tako da instancira 100 korisnika
+* UserRepository sada treba da nasledi `PagingAndSortingRepository<T, ID>` umesto `JpaRepository<T, ID>`
+* kontroler i servis korisnika je neophodno izmeniti tako da prima parametar `?page=` koji govori koju po redu stranicu želimo, kao i da vraća `Page<User>`
+
+## Validacija
+
+* dodati `@NotBlank` i `@Size(max=30)` anotacije na firstName polje `UserRegistrationDTO`
+* dodati anotaciju `@Validated` na metodu koja obrađuje POST u UserController klasi
 
 
 
-### Domaći zadatak
+## Domaći zadatak
 
 1. Ponoviti JavaScript i jQuery
