@@ -38,7 +38,9 @@ public class ApiAddressController {
 				HttpStatus.OK);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(
+			method=RequestMethod.POST,
+			consumes="application/json")
 	public ResponseEntity<Address> add(
 			@RequestBody Address newAddress){
 		
@@ -49,7 +51,10 @@ public class ApiAddressController {
 				HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
+	@RequestMapping(
+			value="/{id}",
+			method=RequestMethod.PUT,
+			consumes="application/json")
 	public ResponseEntity<Address> edit(
 		@PathVariable Long id,
 		@RequestBody Address editedAddress){

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import jwd.wafepa.support.UserToUserDTO;
 import jwd.wafepa.web.dto.UserDTO;
 import jwd.wafepa.web.dto.UserRegistrationDTO;
 
+@Controller
+@RequestMapping(value="/api/users")
 public class ApiUserController {
 	@Autowired
 	private UserService userService;
@@ -63,7 +66,7 @@ public class ApiUserController {
 		if(newUser.getPassword()==null 
 				|| newUser.getPassword().isEmpty()
 				|| !newUser.getPassword().equals(newUser.getPasswordConfirm())){
-			new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		User user = new User();
 		user.setEmail(newUser.getEmail());
