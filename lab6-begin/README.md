@@ -162,9 +162,8 @@ wafepaApp.config(['$routeProvider', function($routeProvider) {
 
 ### Domaći zadaci
 
-* Uraditi za korisnike sve što je urađeno na času za aktivnosti
+* Pročitati (SPA and the Single Page Myth)[http://www.johnpapa.net/pageinspa/]
 * Napraviti novu stranicu (nazovite je kako hoćete, koristićemo je samo za ovaj domaći)
   * Dodati polje za unos teksta i dugme. Onemogućiti pritisak na dugme ukoliko je polje prazno, u suprotnom pritiskom na dugme obrisati sadržaj polja.
   * Dodati dva polja za unos teksta. Unos u prvo polje preslikava se u drugo polje, ali ne i obrnuto (ako se unese nešto u drugo polje, ne menja se prvo polje)
-  * Dodati tabelu u kojoj će se prikazivati plejlista BBC Radio 1 (dostupna na http://www.bbc.co.uk/radio1/playlist.json). Mala napomena koju sam zaboravio da spomenem - ovo neće raditi tek tako, tj. biće jedna greška (ostaviću je vama, ali mali hint: googlajte $http JSONP :) ).
 
