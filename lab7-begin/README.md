@@ -33,8 +33,7 @@ $http.delete('route')								// route je putanja resursa koji se briše
 
 Za više informacija o $http servisu pogledati AngularJS dokumentaciju [https://docs.angularjs.org/api/ng/service/$http](https://docs.angularjs.org/api/ng/service/$http)
 
-
-```
+---
 
 * Implementirati prikaz aktivnosti na stranici /activities. Aktivnosti prikazati u tabeli.
 
