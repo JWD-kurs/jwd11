@@ -67,6 +67,7 @@ Ukoliko neka ruta sadrži parametre rute, (npr. konkretno za stranicu za izmenu 
 vrednost parametra rute se može dobiti kroz $routeParams objekat, koji je zapravo mapa (key-value), tako što se 
 traži vrednost po ključu imena parametra (npr. za prethodni primer -> vrednost $routeParams.id će biti 5).
 
+Za više informacija o $routeParams servisu pogledati AngularJS dokumentaciju [https://docs.angularjs.org/api/ngRoute/service/$routeParams](https://docs.angularjs.org/api/ngRoute/service/$routeParams)
 ----
 
 ### Domaći zadaci
