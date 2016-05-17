@@ -68,6 +68,7 @@ vrednost parametra rute se može dobiti kroz $routeParams objekat, koji je zapra
 traži vrednost po ključu imena parametra (npr. za prethodni primer -> vrednost $routeParams.id će biti 5).
 
 Za više informacija o $routeParams servisu pogledati AngularJS dokumentaciju [https://docs.angularjs.org/api/ngRoute/service/$routeParams](https://docs.angularjs.org/api/ngRoute/service/$routeParams)
+
 ----
 
 ### Domaći zadaci
