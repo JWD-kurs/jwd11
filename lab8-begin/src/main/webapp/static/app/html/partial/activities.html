@@ -1,0 +1,23 @@
+<h2>Activities</h2>
+
+<table ng-init="getActivities()">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="activity in activities">
+			<td>{{ activity.id }}</td>
+			<td>{{ activity.name }}</td>
+			<td>
+				<button ng-click="deleteActivity(activity.id)">Delete</button>
+				<a href="/#/activities/edit/{{activity.id}}">Edit</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<a href="/#/activities/add">Add new activity</a>
