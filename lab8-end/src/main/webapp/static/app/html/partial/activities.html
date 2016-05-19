@@ -1,0 +1,28 @@
+<h2>Activities</h2>
+
+<table class="table" ng-init="getActivities()">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="activity in activities">
+			<td>{{ activity.id }}</td>
+			<td>{{ activity.name }}</td>
+			<td>
+				<button class="btn btn-danger btn-xs" ng-click="deleteActivity(activity.id)">Delete</button>
+				<a class="btn btn-info btn-xs" href="/#/activities/edit/{{activity.id}}">Edit</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="row text-center">
+	<span ng-hide="hideSpinner" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+	<div ng-show="error" class="alert alert-danger" role="alert">Oops, something went wrong! (smiley face)</div>
+</div>
+
+<a href="/#/activities/add">Add new activity</a>
