@@ -51,3 +51,7 @@ Potreban CSS kod:
 
 1. Eksperimentisati sa Bootstrap CSS i komponentama
 2. Pogledati alternativu za Bootstrap, a to je Material design (by Google) - [http://materializecss.com/](http://materializecss.com/)
+3. Napraviti da je alert sa porukom greške na stranici za prikaz aktivnosti "dissmissable", tj. da može da se ugasi.
+4. Na stranici za prikaz svih aktivnosti pored naslova stranica ispisati ukupan broj aktivnosti (iskoristiti Bootstrap badges).
+5. Na stranici za dodavanje aktivnosti naslov da bude samo "Add activity".
+5. Na stranici za izmenu aktivnosti naslov da bude samo "Edit activity".
