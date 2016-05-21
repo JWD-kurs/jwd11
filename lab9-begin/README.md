@@ -51,6 +51,7 @@ $http.get('api/activities', { params: {'name': 'run'}})
 		.error(...)
 ```
 
+---
 
 ### Paginacija
 
