@@ -1,4 +1,4 @@
-﻿## Lab 9 - Pretraživanje, paginacija, custom direktive, custom servisi, modularizacija
+﻿## Lab 9 - Pretraživanje, paginacija, custom direktive, custom servisi
 
 ### Pretraživanje
 
@@ -137,12 +137,12 @@ Obratiti pažnju da se servis OBAVEZNO injektuje u kontroler u kojem se koristi 
 Takođe, custom servisi nemaju $ na početku imena, za razliku od AngularJS ugrađenih servisa.
 
 
-* Definisati custom servis "activityRestService" koji će enkapsulirati čitavu funkcionalnost vezanu za dobavljanje, brisanje i čuvanje aktivnosti preko REST servera.
+* Definisati custom servis "activityService" koji će enkapsulirati čitavu funkcionalnost vezanu za dobavljanje, brisanje i čuvanje aktivnosti preko REST servera.
 
 ----
 
-### Modularizacija komponenti AngularJS aplikacije u zasebne fajlove
+### Domaći
 
-* Razdvojiti aplikaciju u više modula, gde će svaki modul biti zasebni JavaScript fajl.
-
-* Napraviti fajlove app.controllers.js, app.directives.js i app.services.js. U ove fajlove prebaciti odgovarajuće funkcionalnosti. OBAVEZNO dodati učitavanje ovih fajlova u index.html.
+* Omogućiti pretraživanje korisnika po imenu ILI prezimenu (dakle ukoliko je upit pretrage "pet"), treba pronaći korisnika koje se zove npr. "Petar",
+ali i korisnika koji se preziva npr. "Petrović".
+* Dodati novu stranicu "Filmovi", na kojoj je moguće pretraživati filmove po imenu i godini koristeći themoviedb.org API https://www.themoviedb.org/documentation/api .
