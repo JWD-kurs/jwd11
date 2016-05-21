@@ -1,4 +1,4 @@
-﻿## Lab 10 - Modularizacija, server deployment
+﻿## Lab 10 - Server deployment
 
 ### Server deployment
 
