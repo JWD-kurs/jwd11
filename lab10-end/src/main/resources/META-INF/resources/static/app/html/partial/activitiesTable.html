@@ -1,0 +1,33 @@
+<input type="text" ng-model="search" />
+<button ng-click="getActivities()">Search</button>
+
+<table class="table" ng-init="page=0; getActivities();">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="activity in activities">
+			<td>{{ activity.id }}</td>
+			<td>{{ activity.name }}</td>
+			<td>
+				<button class="btn btn-danger btn-xs" ng-click="deleteActivity(activity.id)">Delete</button>
+				<a class="btn btn-info btn-xs" href="/#/activities/edit/{{activity.id}}">Edit</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="row text-center">
+	<span ng-hide="hideSpinner" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+	<div ng-show="error" class="alert alert-danger" role="alert">Oops, something went wrong! (smiley face)</div>
+</div>
+
+<div class="row text-right">
+	<button ng-disabled="page==0" ng-click="page=page-1; getActivities();" class="btn btn-default">Previous</button>
+	<span class="label label-default">{{ page + 1 }} / {{ totalPages }}</span>
+	<button ng-disabled="page==totalPages-1" ng-click="page=page+1; getActivities();" class="btn btn-default">Next</button>
+</div>

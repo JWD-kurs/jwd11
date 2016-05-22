@@ -1,0 +1,15 @@
+<h2>Add/edit activity</h2>
+
+<form class="form-horizontal" ng-init="initActivity()">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Name</label>
+		<div class="col-sm-4">
+			<input ng-model="activity.name" type="text" class="form-control" placeholder="Enter activity name...">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button ng-click="saveActivity()" ng-disabled="!activity.name" type="submit" class="btn btn-default">Save</button>
+		</div>
+	</div>
+</form>
